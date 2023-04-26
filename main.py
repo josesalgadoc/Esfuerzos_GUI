@@ -287,9 +287,11 @@ def run():
 
             if event == 'Calcular':              
 
-                b = float(values['-b_RECTANGULAR_LOAD-'])
-                l = float(values['-z_RECTANGULAR_LOAD-'])
                 q = float(values['-q_RECTANGULAR_LOAD-'])
+                b = float(values['-b_RECTANGULAR_LOAD-'])
+                l = float(values['-l_RECTANGULAR_LOAD-'])
+                z = float(values['-z_RECTANGULAR_LOAD-'])
+                
                 m = b/z
                 n = l/z
 
