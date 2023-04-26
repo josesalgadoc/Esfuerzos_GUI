@@ -4,21 +4,24 @@ from math import log
 from math import pi
 from math import degrees, atan
 
+
 import numpy as np
 
 import PySimpleGUI as sg
-from PySimpleGUI.PySimpleGUI import Graph, Text
+# from PySimpleGUI.PySimpleGUI import Graph, Text
+
 
 ## Configuracion de sg
 sg.theme('NeutralBlue')
 sg.set_global_icon('./icon.ico')
 
 menu_def = [
-    ['Archivo', ['Volver al inicio','Salir']]
+    ['Archivo', ['Salir']]
 ]
 
 head_principal = [
-    [sg.Text('Calculo de esfuerzos en el suelo')]
+    [sg.Text(text='Cálculo de Esfuerzos en el Suelo', font=("Helvetica", 11, "bold"), size=(80,1), justification='center'), sg.Image(filename='./images/escudo.png', size=(50,50), key='-IMAGE-')
+    ]
 ]
 
 principal = [
@@ -33,7 +36,7 @@ def make_win_principal():
         [
             [sg.Menu(menu_def, key='-MENU-')], 
             head_principal,
-            principal,
+            principal
         ]
     ]
     return sg.Window('Esfuerzos en el Suelo', layout, finalize = True)
@@ -42,7 +45,7 @@ def make_win_principal():
 def verical_point_load():
     layout = [
             [sg.Menu(menu_def, key='-MENU-')], 
-            [sg.Text('Carga Puntual')],
+            [sg.Text('Carga Puntual', font=("Helvetic", 11, "bold"))],
             [sg.Text('A continuación, suministre los valores requeridos para el calculo en el método Carga Puntual')],
             [
                 sg.Column([
@@ -59,6 +62,7 @@ def verical_point_load():
                                 key='-R_VERTICAL_LOAD-')]
                         ])
             ],
+            [sg.Image(filename='./images/carga_puntual.png', size=(300,300), key='-IMAGE-')],
             [sg.Button('Volver'), sg.Button('Calcular')]
         ]
     return sg.Window('Carga Puntual', layout, finalize = True)
@@ -67,7 +71,7 @@ def verical_point_load():
 def infinite_vertical_strip_load():
     layout = [
             [sg.Menu(menu_def, key='-MENU-')], 
-            [sg.Text('Franja de Carga Vertical y Linealmente Infinita')],
+            [sg.Text('Franja de Carga Vertical y Linealmente Infinita', font=("Helvetic", 11, "bold"))],
             [sg.Text('A continuación, suministre los valores requeridos para el calculo del método')],
             [
                 sg.Column([
@@ -87,6 +91,7 @@ def infinite_vertical_strip_load():
                                 key='-b_VERTICAL_STRIP_LOAD-')]
                         ])
             ],
+            [sg.Image(filename='./images/vertical_y_linealmente_infinita.png', size=(518,400), key='-IMAGE-')],
             [sg.Button('Volver'), sg.Button('Calcular')]
         ]
     return sg.Window('Franja de Carga Vertical y Linealmente Infinita', layout, finalize = True)
@@ -95,7 +100,7 @@ def infinite_vertical_strip_load():
 def infinite_triangular_strip_load():
     layout = [
             [sg.Menu(menu_def, key='-MENU-')], 
-            [sg.Text('Franja de Carga Triangular y Linealmente Infinita')],
+            [sg.Text('Franja de Carga Triangular y Linealmente Infinita', font=("Helvetic", 11, "bold"))],
             [sg.Text('A continuación, suministre los valores requeridos para el calculo del método')],
             [
                 sg.Column([
@@ -112,6 +117,7 @@ def infinite_triangular_strip_load():
                                 key='-d_TRIANGULAR_STRIP_LOAD-')]
                         ])
             ],
+            [sg.Image(filename='./images/triangular_y_linealmente_infinita.png', size=(512,400), key='-IMAGE-')],
             [sg.Button('Volver'), sg.Button('Calcular')]
         ]
     return sg.Window('Franja de Carga Triangular y Linealmente Infinita', layout, finalize = True)
@@ -120,7 +126,7 @@ def infinite_triangular_strip_load():
 def circular_area_load():
     layout = [
             [sg.Menu(menu_def, key='-MENU-')], 
-            [sg.Text('Area Circular Uniformemente Cargada')],
+            [sg.Text('Area Circular Uniformemente Cargada', font=("Helvetic", 11, "bold"))],
             [sg.Text('A continuación, suministre los valores requeridos para el calculo del método')],
             [
                 sg.Column([
@@ -137,6 +143,7 @@ def circular_area_load():
                                 key='-z_CIRCULAR_LOAD-')]
                         ])
             ],
+            [sg.Image(filename='./images/circular_uniformemente.png', size=(459,400), key='-IMAGE-')],
             [sg.Button('Volver'), sg.Button('Calcular')]
         ]
     return sg.Window('Area Circular Uniformemente Cargada', layout, finalize = True)
@@ -145,7 +152,7 @@ def circular_area_load():
 def rectangular_area_load():
     layout = [
             [sg.Menu(menu_def, key='-MENU-')], 
-            [sg.Text('Area Rectangular Uniformemente Cargada')],
+            [sg.Text('Area Rectangular Uniformemente Cargada', font=("Helvetic", 11, "bold"))],
             [sg.Text('A continuación, suministre los valores requeridos para el calculo del método')],
             [
                 sg.Column([
@@ -165,6 +172,7 @@ def rectangular_area_load():
                                 key='-z_RECTANGULAR_LOAD-')]
                         ])
             ],
+            [sg.Image(filename='./images/rectangular_uniforme.png', size=(660,400), key='-IMAGE-')],
             [sg.Button('Volver'), sg.Button('Calcular')]
         ]
     return sg.Window('Area Rectangular Uniformemente Cargada', layout, finalize = True)
@@ -173,7 +181,7 @@ def rectangular_area_load():
 def trapecio_area_load():
     layout = [
             [sg.Menu(menu_def, key='-MENU-')], 
-            [sg.Text('Franja de Carga Trapezoidal')],
+            [sg.Text('Franja de Carga Trapezoidal', font=("Helvetic", 11, "bold"))],
             [sg.Text('A continuación, suministre los valores requeridos para el calculo del método')],
             [
                 sg.Column([
@@ -197,6 +205,7 @@ def trapecio_area_load():
                                 key='-alfa2_TRAPECIO_LOAD-')]
                         ])
             ],
+            [sg.Image(filename='./images/trapezoidal.png', size=(440,400), key='-IMAGE-')],
             [sg.Button('Volver'), sg.Button('Calcular')]
         ]
     return sg.Window('Franja de Carga Trapezoidal', layout, finalize = True)
