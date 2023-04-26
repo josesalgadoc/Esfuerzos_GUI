@@ -62,7 +62,7 @@ def verical_point_load():
                                 key='-R_VERTICAL_LOAD-')]
                         ])
             ],
-            [sg.Image(filename='./images/carga_puntual.png', size=(300,300), key='-IMAGE-')],
+            [sg.Image(filename='./images/puntual_carga_image.png', size=(793,400), key='-IMAGE-')],
             [sg.Button('Volver'), sg.Button('Calcular')]
         ]
     return sg.Window('Carga Puntual', layout, finalize = True)
