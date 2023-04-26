@@ -230,8 +230,6 @@ def run():
                 if values['-METODO-'] == 'Franja de Carga Trapezoidal':
                     trapecio_load = trapecio_area_load()
 
-
-
         if window == vertical_load_window:
             if event == 'Volver':
                 window.close()
@@ -242,7 +240,7 @@ def run():
 
                 carga_puntual = (float(values['-P_VERTICAL_LOAD-']) / (float(values['-Z_VERTICAL_LOAD-'])**2)) * ((3 / (2*pi)) * (1 / (((float(values['-R_VERTICAL_LOAD-']) / float(values['-Z_VERTICAL_LOAD-']))**2) + 1) ** (5/2)))
 
-                sg.Popup('El valor de la perdida es ' + str(carga_puntual))
+                sg.Popup('El incremento de carga es ' + str(carga_puntual))
 
         if window == vertical_strip_load:
             if event == 'Volver':
@@ -256,7 +254,7 @@ def run():
 
                 franja_vertical_infinita = (float(values['-q_VERTICAL_STRIP_LOAD-']) / pi) * ((((1-float(values['-v_VERTICAL_STRIP_LOAD-'])) * np.log(float(values['-r_VERTICAL_STRIP_LOAD-']) / (2*float(values['-b_VERTICAL_STRIP_LOAD-'])))) + float(values['-v_VERTICAL_STRIP_LOAD-'])) / ((1+float(values['-v_VERTICAL_STRIP_LOAD-'])) * (((2*float(values['-b_VERTICAL_STRIP_LOAD-']))**2) / ((float(values['-r_VERTICAL_STRIP_LOAD-'])**2) - 1))))
 
-                sg.Popup('El valor de la perdida es ' + str(franja_vertical_infinita))
+                sg.Popup('El incremento de carga es ' + str(franja_vertical_infinita))
 
         if window == triangular_strip_load:
             if event == 'Volver':
@@ -270,7 +268,7 @@ def run():
 
                 franja_triangular_infinita = (float(values['-q_TRIANGULAR_STRIP_LOAD-']) / (2*pi)) * (1 - ((2*float(values['-h_TRIANGULAR_STRIP_LOAD-'])) / (((float(values['-h_TRIANGULAR_STRIP_LOAD-'])**2) + (float(values['-d_TRIANGULAR_STRIP_LOAD-'])**2) ** (1/2)))))
 
-                sg.Popup('El valor de la perdida es ' + str(franja_triangular_infinita))
+                sg.Popup('El incremento de carga es ' + str(franja_triangular_infinita))
 
         if window == rectangular_area:
             if event == 'Volver':
@@ -279,7 +277,7 @@ def run():
                 principal_window.un_hide()
 
             if event == 'Calcular':              
-                
+
                 b = float(values['-b_RECTANGULAR_LOAD-'])
                 l = float(values['-z_RECTANGULAR_LOAD-'])
                 q = float(values['-q_RECTANGULAR_LOAD-'])
@@ -288,7 +286,7 @@ def run():
 
                 rectangular_uniforme_area = ((q / (4*pi)) * (((2*m*n) * ((m**2)+(n**2)+2) * (((m**2)+(n**2)+1)**(1/2))) / (((m**2)+(n**2)+((m**2)*(n**2))+1) * ((m**2)+(n**2)+1)))) + (degrees(atan((((2*m*n) * (((m**2)+(n**2)+1)*(1/2))) / ((m**2)+(n**2)+((m**2)*(n**2))-1)))))
 
-                sg.Popup('El valor de la perdida es ' + str(rectangular_uniforme_area))
+                sg.Popup('El incremento de carga es ' + str(rectangular_uniforme_area))
 
         if window == circular_area:
             if event == 'Volver':
@@ -304,7 +302,7 @@ def run():
                 
                 circular_uniforme_area = (q) * (1 - (1 / ((1+((r/z)**2))**(3/2))))
 
-                sg.Popup('El valor de la perdida es ' + str(circular_uniforme_area))
+                sg.Popup('El incremento de carga es ' + str(circular_uniforme_area))
 
         if window == trapecio_load:
             if event == 'Volver':
@@ -322,7 +320,7 @@ def run():
                 
                 trapezoide_load = (q/pi) * ((((b1+b2) / b2) * (alfa1+alfa2)) - (((b1/b2)*(alfa2))))
 
-                sg.Popup('El valor de la perdida es ' + str(trapezoide_load))
+                sg.Popup('El incremento de carga es ' + str(trapezoide_load))
 
     window.close()
 
